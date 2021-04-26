@@ -8,7 +8,7 @@
     text-justify: auto;
 }
 
-/* ------------------------ LOGIN ------------------------ */
+/* ------------------------ FORM CONTAINER ------------------------ */
 
 
 
@@ -36,10 +36,6 @@
     text-align: center;
   }
   
-  
-  
-  /* TABS */
-  
   #login {
     margin-top: 10%;
   }
@@ -55,7 +51,7 @@
   
   
   
-  /* FORM TYPOGRAPHY*/
+  /* FORM APPEARANCE*/
   
   input[type=button], input[type=submit], input[type=reset]  {
     background-color: #FF3B3B;
@@ -90,8 +86,8 @@
     -ms-transform: scale(0.95);
     transform: scale(0.95);
   }
-  
-  input[type=text] {
+
+  .textholder {
     background-color: #f6f6f6;
     border: none;
     color: #0d0d0d;
@@ -112,14 +108,16 @@
     border-radius: 5px 5px 5px 5px;
   }
   
-  input[type=text]:focus {
+  .textholder:focus {
     background-color: #fff;
     border-bottom: 2px solid #FF3B3B;
   }
   
-  input[type=text]:placeholder {
+  .textholder:placeholder {
     color: #cccccc;
   }
+
+  
   
   
   
@@ -196,8 +194,6 @@
     -moz-animation-delay: 1s;
     animation-delay: 1s;
   }
-  
-  /* OTHERS */
   
   *:focus {
       outline: none;

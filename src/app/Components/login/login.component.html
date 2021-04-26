@@ -5,10 +5,10 @@
     <div class="wrapper fadeInDown">
         <div id="formContent">
       
-          <form>
-            <input type="text" id="login" class="fadeIn first" name="login" placeholder="Username">
-            <input type="text" id="password" class="fadeIn second" name="login" placeholder="Password">
-            <input type="submit" class="fadeIn third" value="Log In">
+          <form [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm.value)">
+            <input type="text" id="login" class="fadeIn first textholder" placeholder="Username" formControlName="username">
+            <input type="password" id="password" class="fadeIn second textholder" placeholder="Password" formControlName="password">
+            <input type="submit" class="fadeIn third textholder" value="Log In">
           </form>
       
         </div>
