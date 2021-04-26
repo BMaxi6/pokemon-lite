@@ -1,20 +1,21 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule, Routes} from '@angular/router'
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './Components/login/login.component';
 
-import { ReactiveFormsModule, FormsModule } from '@angular/forms'
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { AppRoutingModule, routingComponents } from './app-routing.module'
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    routingComponents
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule, 
-    FormsModule,
+    FormsModule, AppRoutingModule,
 
   ],
   providers: [],
