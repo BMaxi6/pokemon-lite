@@ -19,18 +19,22 @@ export class LoginComponent implements OnInit {
 
   constructor(private api:CertantApiService, private router:Router) { }
 
+  checkLocalStorage(){
+    if(localStorage.getItem("userId")){
+      this.router.navigate(['pokemons']);
+    }
+  }
+
   ngOnInit(): void {
+    this.checkLocalStorage();
   }
 
   onLogin(form:loginI){
     this.api.loginByUsername(form).subscribe( data => {
-      let dataResponse:response = data;
-      if(dataResponse.code == 200){
-        localStorage.setItem("userId", data.message.result.userId);
-        this.router.navigate(['pokemons']);
-      } else {
-        console.log("Usuario o contraseña incorrecta");
-      }
+      console.log('Data:' + data);
+      localStorage.setItem("userId", data.userId);
+      localStorage.setItem("username", data.username);
+      this.router.navigate(['pokemons']);
     });
   }
 

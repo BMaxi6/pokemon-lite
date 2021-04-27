@@ -21,14 +21,12 @@ export class CertantApiService {
 
   constructor(private http:HttpClient) { }
 
-  loginByUsername(form:loginI):Observable<response>{
+  loginByUsername(form:loginI):Observable<loginResponseI>{
     let direccion = this.url + "login";
-    const answer = this.http.post<response>(direccion, form, httpOptions);
-    answer.subscribe(value => console.log(value));
-    return answer;
+    return this.http.post<loginResponseI>(direccion, form, httpOptions);;
   }
 
-  getPokemonByUserId(id:number):Observable<pokemonI[]> {
+  getPokemonByUserId(id:string):Observable<pokemonI[]> {
     let direccion = this.url + "pokemon/" + id;
     return  this.http.get<pokemonI[]>(direccion, httpOptions);
   }
