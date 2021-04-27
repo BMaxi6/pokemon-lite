@@ -1,5 +1,6 @@
 .fullscreen{
     background-color: #DFDFDF;
+    display: flex;
 }
 
 .card-container {
@@ -30,7 +31,7 @@
     padding: 1%;
     width: 250px;
     font-size: 100%;
-    background: linear-gradient(to top, white 0%, white 75%, #FF3131 25%, #FF3131 100%);
+    background: linear-gradient(to top, white 0%, white 70%, #FF3131 30%, #FF3131 100%);
 }
 
 @media(max-width: 500px){

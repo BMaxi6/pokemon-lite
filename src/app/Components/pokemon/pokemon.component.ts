@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { response } from 'src/app/models/responses.interface';
+import { pokemonI } from 'src/app/models/pokemon.request.interface'
 import { CertantApiService } from '../../services/certant-api/certant-api.service'
 
 @Component({
@@ -8,12 +11,13 @@ import { CertantApiService } from '../../services/certant-api/certant-api.servic
 })
 export class PokemonComponent implements OnInit {
 
-  items = ['first ','second ', 'tercero ', 'cuarto ', 'quinto '];
+  pokemons:pokemonI[];
+  
   constructor( private api:CertantApiService ) {
-    const items = this.api.getPokemonById(1);
    }
 
   ngOnInit(): void {
+    this.api.getPokemonByUserId(1).subscribe( data => this.pokemons = data)
   }
 
 }

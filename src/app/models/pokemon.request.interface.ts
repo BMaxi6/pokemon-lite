@@ -9,7 +9,3 @@ export interface pokemonI{
     evolutionId: number;
     abilities: abilitiesI[];
 }
-
-export interface pokemonsI{
-    array: pokemonI[];
-}

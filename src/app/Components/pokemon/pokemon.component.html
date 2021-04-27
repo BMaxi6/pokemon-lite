@@ -1,18 +1,18 @@
 <div class="fullscreen">
     <div class="card-container">
-        <mat-card class="card pixel-font" *ngFor="let item of items; let i=index">
-            <mat-card-title class="title-card">{{item}}Pikachu</mat-card-title>
-            <mat-card-subtitle>El proximo Raichu</mat-card-subtitle>
-            <mat-card-content>
-              <p>
-                Un bichito amarillo que tira impactruenos
-              </p>
-            </mat-card-content>
-            <mat-card-actions>
-              <button mat-raised-button color="warn" class="pokemon-pixel">Ver</button>
-            </mat-card-actions>
-          </mat-card>
+
+      <mat-card class="card pixel-font fadeIn" *ngFor="let pokemon of pokemons; let i=index">
+        <mat-card-title class="title-card">{{pokemon.name}}</mat-card-title>
+        <mat-card-subtitle>lvl: {{pokemon.lvl}}</mat-card-subtitle>
+        <mat-card-content>
+          <p>
+            {{pokemon.type}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="warn" class="pokemon-pixel">Ver</button>
+        </mat-card-actions>
+      </mat-card>  
           
     </div>
-
 </div>

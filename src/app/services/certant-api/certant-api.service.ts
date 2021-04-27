@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { loginI, loginResponseI } from '../../models/login.interface'
+import { pokemonI } from '../../models/pokemon.request.interface'
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs'
 import { response } from '../../models/responses.interface'
-import { waitForAsync } from '@angular/core/testing';
 
 const httpOptions = {
   headers: new HttpHeaders({ 
@@ -23,14 +23,18 @@ export class CertantApiService {
 
   loginByUsername(form:loginI):Observable<response>{
     let direccion = this.url + "login";
-    return this.http.post<response>(direccion, form, httpOptions);
+    const answer = this.http.post<response>(direccion, form, httpOptions);
+    answer.subscribe(value => console.log(value));
+    return answer;
   }
 
-  getPokemonById(id:number):Observable<response> {
+  getPokemonByUserId(id:number):Observable<pokemonI[]> {
     let direccion = this.url + "pokemon/" + id;
-    const pokemons = this.http.get<response>(direccion, httpOptions);
-    pokemons.subscribe(value => console.log(value));
-    return pokemons;
+    return  this.http.get<pokemonI[]>(direccion, httpOptions);
   }
+
+  editPokemonByUserId(){}
+
+  addPokemonByUserId(){}
 
 }
