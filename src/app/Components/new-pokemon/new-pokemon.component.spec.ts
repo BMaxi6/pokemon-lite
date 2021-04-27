@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { NewPokemonComponent } from './new-pokemon.component';
 
 describe('NewPokemonComponent', () => {
