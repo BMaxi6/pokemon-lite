@@ -3,10 +3,13 @@
         <div class="title pokemon-title">
             <p>{{pokemon.name}}</p>
         </div>
+
         <div class="description pixel-font">
             Lvl: {{pokemon.lvl}}
         </div>
+
         <hr>
+
         <p class="subtitle pixel-font">Abilities: </p>
         <div class="info pixel-font" *ngFor="let abilitie of abilities">
             <strong>{{abilitie.name}}</strong>: {{abilitie.description}}     
@@ -14,13 +17,24 @@
         <div class="info pixel-font" *ngIf="cantAbilities == 0">
             No ha aprendido habilidades
         </div>
+
         <hr>
+
         <p class="subtitle pixel-font">Evoluciones: </p>
         <div class="info pixel-font" *ngFor="let evolution of evolutions">
             {{evolution.name}}: {{evolution.lvl}}
         </div>
         <div class="info pixel-font" *ngIf="cantEvolutions == 0">
             No posee evoluciones
+        </div>
+
+        <hr>
+
+        <div class="example-button-row">
+            <a routerLink='/pokemons' style="margin: 0;">
+                <button mat-flat-button class="cancel-button">Cancel</button>
+            </a>
+            <button mat-flat-button color="warn" class="edit-button">Edit</button>
         </div>        
     </div>
 </body>

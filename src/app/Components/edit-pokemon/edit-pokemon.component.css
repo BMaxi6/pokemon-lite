@@ -1,3 +1,13 @@
+.cancel-button{
+    width: 25%;
+    background-color: grey;
+    margin-right: 5%;
+}
+
+.edit-button{
+    width: 25%;
+}
+
 body{
     position: absolute;
     background-color: #DFDFDF;
@@ -10,7 +20,7 @@ body{
     display: block;
     font-family: "Poppins";
     margin-bottom: 10%;
-    margin-top: 3%;
+    margin-top: 2%;
     text-align: center;
     border-style: solid;
     border-color: grey;
@@ -24,7 +34,7 @@ body{
 /* --------------------- FONT AND INSIDE CARD --------------------- */ 
 
 .title {
-    font-size: 200%;
+    font-size: 250%;
     font-weight: bold;
     padding: 4%;
 }
