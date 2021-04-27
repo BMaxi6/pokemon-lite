@@ -8,4 +8,11 @@ export interface pokemonI{
     name: string;
     evolutionId: number;
     abilities: abilitiesI[];
+    lvl: number;
+}
+
+export interface evolutionI{
+    id: number;
+    lvl: number;
+    name: string;
 }
