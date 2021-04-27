@@ -1,0 +1,22 @@
+@font-face {
+  font-family: pixel;
+  src: url(../../../assets/font/pixel.ttf) format("opentype");
+}
+
+.header-text{
+    font-size: 200%;
+    font-weight: bold;
+    font-family: pixel;
+  }
+  
+  @media(max-width: 500px){
+    .header-text{
+      font-size: 30px;
+    }
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+  
+  

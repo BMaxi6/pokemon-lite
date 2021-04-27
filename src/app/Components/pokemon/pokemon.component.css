@@ -1,7 +1,11 @@
+/* ---------------------- GENERAL ---------------------- */
+
 .fullscreen{
     background-color: #DFDFDF;
     display: flex;
 }
+
+/* ---------------------- DECK CARD ---------------------- */
 
 .card-container {
     display : flex;
@@ -18,6 +22,8 @@
     font-size: 25px;
 }
 
+
+
 .card {
     max-width: 280px;
     border-radius: 10%;
@@ -31,7 +37,7 @@
     padding: 1%;
     width: 250px;
     font-size: 100%;
-    background: linear-gradient(to top, white 0%, white 70%, #FF3131 30%, #FF3131 100%);
+    background: linear-gradient(to top, white 0%, white 70%, #FF3131 35%, #FF3131 100%);
 }
 
 @media(max-width: 500px){
@@ -39,4 +45,3 @@
     width: 250px;
   }
 }
-
