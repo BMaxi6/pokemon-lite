@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators} from '@angular/forms'
 import { CertantApiService } from '../../services/certant-api/certant-api.service'
-import { newPokemonI } from '../../models/pokemon.request.interface'
+import { abilitiesI, newPokemonI } from '../../models/pokemon.request.interface'
 import { Router } from '@angular/router'
 
 @Component({
@@ -11,12 +11,21 @@ import { Router } from '@angular/router'
 })
 export class NewPokemonComponent implements OnInit {
 
+  profile = {'name': '','description':''};
+  abilites:abilitiesI[] = [];
+  cantAbilities = 0;
+
   newPokeForm = new FormGroup({
     name: new FormControl('', Validators.required),
     evolutionId: new FormControl(null, Validators.required),
     lvl: new FormControl('', Validators.required),
     id: new FormControl(localStorage.getItem('userId'), Validators.required),
-    // ABILITIES Y 
+    abilities: new FormControl('', Validators.required),
+  })
+
+  newAbilityForm = new FormGroup({
+    name: new FormControl('', Validators.required),
+    description: new FormControl(null, Validators.required),
   })
 
   constructor(private api:CertantApiService, private router:Router) { }
@@ -32,13 +41,18 @@ export class NewPokemonComponent implements OnInit {
     this.checkLocalStorage();
   }
 
+  onSaveAbility(form:abilitiesI){
+    this.abilites.push(form);
+    this.cantAbilities++;
+    this.newAbilityForm.reset(this.profile);
+  }
+
   onSave(form:newPokemonI){
-    console.log(form.name)
-    /*
+    form.abilities = this.abilites;
     this.api.addPokemonByUserId(form).subscribe( data => {
       console.log(data);
     });
-    */
+    this.router.navigate(['pokemons']);
   }
 
 }
