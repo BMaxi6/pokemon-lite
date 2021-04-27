@@ -31,7 +31,6 @@ export class LoginComponent implements OnInit {
 
   onLogin(form:loginI){
     this.api.loginByUsername(form).subscribe( data => {
-      console.log('Data:' + data);
       localStorage.setItem("userId", data.userId);
       localStorage.setItem("username", data.username);
       this.router.navigate(['pokemons']);

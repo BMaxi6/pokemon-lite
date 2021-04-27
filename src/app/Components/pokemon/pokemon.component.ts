@@ -10,17 +10,13 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class PokemonComponent implements OnInit {
   pokemons:pokemonI[];
-  
-  open(id){
-    console.log(id);
-  }
 
   constructor( private api:CertantApiService, private router:Router ) {
    }
 
   ngOnInit(): void {
     if(localStorage.getItem("userId")){
-      this.api.getPokemonByUserId(localStorage.getItem('userId')).subscribe( data => this.pokemons = data)
+      this.api.getPokemonByUserId(localStorage.getItem('userId')).subscribe( data => this.pokemons = data);
     } else {
       this.router.navigate(['login']);
     }

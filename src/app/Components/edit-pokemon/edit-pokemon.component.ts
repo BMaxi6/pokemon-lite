@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { abilitiesI, evolutionI, pokemonI } from 'src/app/models/pokemon.request.interface'
 import { CertantApiService } from '../../services/certant-api/certant-api.service'
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-edit-pokemon',
@@ -10,32 +12,44 @@ import { Router } from '@angular/router';
 })
 export class EditPokemonComponent implements OnInit {
 
-  pokemon:pokemonI = {'name':'Maxi','id':0,'lvl':0,'abilities':[], evolutionId: 0};
-  abilities:abilitiesI[] = [];
-  evolutions:evolutionI[] = [];
-  cantAbilities:number;
-  cantEvolutions:number;
+  pokemon:pokemonI;
+  abilities:abilitiesI[];
+  evolutions:evolutionI[];
+  cantAbilities:number=0;
+  cantEvolutions:number=0;
 
-  constructor( private api:CertantApiService, private router:Router ) {
-    
-   }
+  id:number;
+
+  constructor( private api:CertantApiService, private router:Router, private route: ActivatedRoute ) { 
+  }
+
+  findPokemon(pokemons:Observable<pokemonI[]>){
+    pokemons.subscribe(
+      data => this.pokemon = data.find (
+        poke => poke.id == this.id
+      )
+    );
+    pokemons.subscribe(
+      data => this.abilities = data.find (
+        poke => poke.id == this.id
+      ).abilities
+    );
+    console.log(this.abilities);
+    this.cantAbilities = this.abilities.length;
+    this.cantEvolutions = this.evolutions.length;
+  }
 
   ngOnInit(): void {
     if(localStorage.getItem("userId")){
-      // CARGAR CARTA
-      this.pokemon.name = "Charmander";
-      this.pokemon.id = 7;
-      this.pokemon.lvl = 4;
-      this.abilities.push({'name':'fueguito','description':'Tira fueguito por la boca'});
-      this.abilities.push({'name':'fueguito','description':'Tira fueguito por la boca'});
-      this.abilities.push({'name':'fueguito','description':'Tira fueguito por la boca'});
-      this.pokemon.abilities = this.abilities;
-      this.cantAbilities = this.abilities.length;
-      this.cantEvolutions = this.evolutions.length;
+      this.id = this.route.snapshot.params.id;
+      let response = this.api.getPokemonByUserId(localStorage.getItem('userId'))
+      this.findPokemon(response);
+      // CARGAR EVOLUCIONES
+      
+       
     } else {
       this.router.navigate(['login']);
     }
   }
-
 }
 
