@@ -1,1 +1,18 @@
-<p>new-pokemon works!</p>
+<div class="big-box pixel-font fadeInDown">
+    NEW POKEMON
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+      
+          <form [formGroup]="newPokeForm" (ngSubmit)="onSave(newPokeForm.value)">
+            <input type="text" id="name" class="fadeIn first textholder" placeholder="Name" formControlName="name">
+            <input type="text" id="lvl" class="fadeIn second textholder" placeholder="Lvl" formControlName="lvl">
+            <input type="submit" class="fadeIn third textholder" id='save-button' value="Save">
+            <a routerLink='/pokemons' style="margin: 0;">
+                <input type="button" class="fadeIn third textholder" id="cancel-button" value="Cancel">
+            </a>
+          </form>
+      
+        </div>
+      </div>
+
+</div>

@@ -46,7 +46,7 @@
   
   
   
-  /* FORM APPEARANCE*/
+  /* ------------------------ FORM APPEARANCE ------------------------ */
   
   input[type=button], input[type=submit], input[type=reset]  {
     background-color: #FF3B3B;
@@ -116,7 +116,7 @@
   
   
   
-  /* ANIMATIONS */
+  /* ------------------------ ANIMATIONS ------------------------ */
   
   *:focus {
       outline: none;

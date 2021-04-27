@@ -16,3 +16,11 @@ export interface evolutionI{
     lvl: number;
     name: string;
 }
+
+export interface newPokemonI{
+    name: string;
+    evolutionId:number;
+    abilities: abilitiesI[];
+    lvl:number;
+    id: number; // userId
+}
