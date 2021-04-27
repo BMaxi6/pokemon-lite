@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators} from '@angular/forms'
+import { CertantApiService } from '../../services/certant-api/certant-api.service'
+import { loginI } from '../../models/login.interface'
 
 @Component({
   selector: 'app-login',
@@ -13,13 +15,15 @@ export class LoginComponent implements OnInit {
     password: new FormControl('', Validators.required)
   })
 
-  constructor() { }
+  constructor(private api:CertantApiService) { }
 
   ngOnInit(): void {
   }
 
-  onLogin(form){
-    console.log(form);
+  onLogin(form:loginI){
+    this.api.loginByUsername(form).subscribe( data => {
+      console.log(data);
+    });
   }
 
 }

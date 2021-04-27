@@ -3,6 +3,21 @@
     src: url(assets/font/pokemon_solid.ttf) format("opentype");
 }
 
+@font-face {
+    font-family: pixel;
+    src: url(assets/font/pixel.ttf) format("opentype");
+}
+
+.pixel-font {
+    font-family: 'pixel';
+}
+
 .pokemon-title{
     font-family: 'pokemon-solid';
+}
+
+.center-container{
+    text-align: center;
+    text-justify: auto;
+    position: absolute;
 }

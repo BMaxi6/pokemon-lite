@@ -1,0 +1,29 @@
+
+.fullscreen{
+    background-color: #ff6347;
+}
+
+.card-container {
+    height: 100%;
+    padding: 5%;
+}
+
+.title-card{
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.example-card {
+    max-width: 280px;
+    border-radius: 10%;
+    border-color: darkgray;
+    border-style: solid;
+    border-width: 1px;
+    text-align: center;
+    text-justify: auto;
+}
+  
+.example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+}
