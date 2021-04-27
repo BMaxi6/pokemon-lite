@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'pokemons', component: PokemonComponent},
   { path: 'newPokemon', component: NewPokemonComponent},
-  { path: 'changePokemon', component: EditPokemonComponent}
+  { path: 'changePokemon/:id', component: EditPokemonComponent}
 ];
 
 @NgModule({

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { pokemonI } from 'src/app/models/pokemon.request.interface'
 import { CertantApiService } from '../../services/certant-api/certant-api.service'
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-pokemon',

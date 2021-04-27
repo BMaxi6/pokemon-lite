@@ -9,7 +9,9 @@
           <p>type: No se encuentran tipos</p>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-raised-button color="warn" class="pokemon-pixel card-button" (click)="open(i)">Ver</button>
+          <a routerLink='/changePokemon/{{pokemon.id}}'>
+            <button mat-raised-button color="warn" class="pokemon-pixel card-button" (click)="open(i)">Ver</button>
+          </a>
         </mat-card-actions>
       </mat-card>  
           
