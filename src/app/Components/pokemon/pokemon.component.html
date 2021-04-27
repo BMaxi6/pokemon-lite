@@ -1,17 +1,15 @@
 <div class="fullscreen">
-
     <div class="card-container">
-        <mat-card class="example-card pixel-font" *ngFor="let item of items; let i=index">
+        <mat-card class="card pixel-font" *ngFor="let item of items; let i=index">
             <mat-card-title class="title-card">{{item}}Pikachu</mat-card-title>
             <mat-card-subtitle>El proximo Raichu</mat-card-subtitle>
-            <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" style="padding: 2%; width: 70%;">
             <mat-card-content>
               <p>
                 Un bichito amarillo que tira impactruenos
               </p>
             </mat-card-content>
             <mat-card-actions>
-              <button mat-button>EDITAR</button>
+              <button mat-raised-button color="warn" class="pokemon-pixel">Ver</button>
             </mat-card-actions>
           </mat-card>
           

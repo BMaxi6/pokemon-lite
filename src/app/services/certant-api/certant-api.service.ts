@@ -5,23 +5,30 @@ import { Observable } from 'rxjs'
 import { response } from '../../models/responses.interface'
 import { waitForAsync } from '@angular/core/testing';
 
+const httpOptions = {
+  headers: new HttpHeaders({ 
+    'Access-Control-Allow-Origin':'*',
+    'Authorization':'authkey',
+  })
+};
+
 @Injectable({
   providedIn: 'root'
 })
 export class CertantApiService {
 
-  url:string = "https://testing.certant.com/pokedex-api/";
+  url:string = "/api/";
 
   constructor(private http:HttpClient) { }
 
   loginByUsername(form:loginI):Observable<response>{
     let direccion = this.url + "login";
-    return this.http.post<response>(direccion, form);
+    return this.http.post<response>(direccion, form, httpOptions);
   }
 
   getPokemonById(id:number):Observable<response> {
     let direccion = this.url + "pokemon/" + id;
-    const pokemons = this.http.get<response>(direccion);
+    const pokemons = this.http.get<response>(direccion, httpOptions);
     pokemons.subscribe(value => console.log(value));
     return pokemons;
   }

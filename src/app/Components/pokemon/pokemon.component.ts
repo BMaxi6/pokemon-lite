@@ -7,7 +7,8 @@ import { CertantApiService } from '../../services/certant-api/certant-api.servic
   styleUrls: ['./pokemon.component.css']
 })
 export class PokemonComponent implements OnInit {
-  items = ''
+
+  items = ['first ','second ', 'tercero ', 'cuarto ', 'quinto '];
   constructor( private api:CertantApiService ) {
     const items = this.api.getPokemonById(1);
    }
