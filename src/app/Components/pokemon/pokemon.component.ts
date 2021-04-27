@@ -11,6 +11,10 @@ import { Router } from '@angular/router';
 export class PokemonComponent implements OnInit {
   pokemons:pokemonI[];
   
+  open(id){
+    console.log(id);
+  }
+
   constructor( private api:CertantApiService, private router:Router ) {
    }
 

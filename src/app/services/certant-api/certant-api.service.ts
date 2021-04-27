@@ -23,7 +23,7 @@ export class CertantApiService {
 
   loginByUsername(form:loginI):Observable<loginResponseI>{
     let direccion = this.url + "login";
-    return this.http.post<loginResponseI>(direccion, form, httpOptions);;
+    return this.http.post<loginResponseI>(direccion, form, httpOptions);
   }
 
   getPokemonByUserId(id:string):Observable<pokemonI[]> {
@@ -31,8 +31,13 @@ export class CertantApiService {
     return  this.http.get<pokemonI[]>(direccion, httpOptions);
   }
 
-  editPokemonByUserId(){}
+  editPokemonByUserId(pokemon:pokemonI):Observable<response>{
+    let direccion = this.url + "pokemon/";
+    return this.http.put<response>(direccion, pokemon, httpOptions);
+  }
 
-  addPokemonByUserId(){}
-
+  addPokemonByUserId(pokemon:pokemonI):Observable<response>{
+    let direccion = this.url + "pokemon/";
+    return this.http.post<response>(direccion, pokemon, httpOptions);
+  }
 }

@@ -3,6 +3,8 @@
 .fullscreen{
     background-color: #DFDFDF;
     display: flex;
+    width: 100%;
+    height: 100%;
 }
 
 /* ---------------------- DECK CARD ---------------------- */
@@ -22,8 +24,6 @@
     font-size: 25px;
 }
 
-
-
 .card {
     max-width: 280px;
     border-radius: 10%;
@@ -38,6 +38,7 @@
     width: 250px;
     font-size: 100%;
     background: linear-gradient(to top, white 0%, white 70%, #FF3131 35%, #FF3131 100%);
+    padding-bottom: 3%;
 }
 
 @media(max-width: 500px){
