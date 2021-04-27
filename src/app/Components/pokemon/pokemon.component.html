@@ -2,6 +2,18 @@
 <div class="fullscreen">
     <div class="card-container">
 
+      <!-- ------------------ NEW CARD ------------------ -->
+
+      <a routerLink='/newPokemon'>
+        <mat-card class="new-card pixel-font fadeIn">
+          <mat-card-title style="font-size: 250%;">NEW POKEMON</mat-card-title>
+          <mat-card-content style="padding-top: 5%;">
+            <p style="font-size: 600%;">+</p>
+          </mat-card-content>
+            
+        </mat-card>
+      </a>
+
       <mat-card class="card pixel-font fadeIn" *ngFor="let pokemon of pokemons; let i=index">
         <mat-card-title class="title-card">{{pokemon.name}}</mat-card-title>
         <mat-card-content style="padding-top: 5%;">
@@ -14,6 +26,8 @@
           </a>
         </mat-card-actions>
       </mat-card>  
+
+      <!-- ------------------ CARD DECKS ------------------ -->
           
     </div>
 </div>
