@@ -6,7 +6,7 @@ import {PokemonComponent} from './Components/pokemon/pokemon.component'
 import {NewPokemonComponent} from './Components/new-pokemon/new-pokemon.component'
 import {ViewPokemonComponent} from './Components/view-pokemon/view-pokemon.component'
 
-const routes: Routes = [
+export const routes: Routes = [
   { path: '' , redirectTo: 'login' , pathMatch: "full"},
   { path: 'login', component: LoginComponent},
   { path: 'pokemons', component: PokemonComponent},
