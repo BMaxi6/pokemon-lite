@@ -6,11 +6,11 @@ import { Observable } from 'rxjs';
 
 
 @Component({
-  selector: 'app-edit-pokemon',
-  templateUrl: './edit-pokemon.component.html',
-  styleUrls: ['./edit-pokemon.component.css']
+  selector: 'app-view-pokemon',
+  templateUrl: './view-pokemon.component.html',
+  styleUrls: ['./view-pokemon.component.css']
 })
-export class EditPokemonComponent implements OnInit {
+export class ViewPokemonComponent implements OnInit {
 
   pokemon:pokemonI;
   abilities:abilitiesI[];
