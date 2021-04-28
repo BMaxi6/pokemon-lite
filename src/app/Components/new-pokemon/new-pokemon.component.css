@@ -18,6 +18,11 @@
     margin-top: 3%;
 }
 
+.select-evolution {
+  width: 85%;
+  font-size: 60%;
+}
+
 /* ------------------------ FORM CONTAINER ------------------------ */
 
 .wrapper {
@@ -42,10 +47,6 @@
     -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     text-align: center;
-  }
-  
-  #name {
-    margin-top: 10%;
   }
 
   h2.inactive {

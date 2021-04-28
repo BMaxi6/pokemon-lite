@@ -3,10 +3,14 @@
     <div class="wrapper fadeInDown">
         <div id="formContent">
 
+          <p>Pokemon info</p>
           <form [formGroup]="newPokeForm" (ngSubmit)="onSave(newPokeForm.value)">
             <input type="text" id="name" class="fadeIn first textholder" placeholder="Name" formControlName="name">
             <input type="text" id="lvl" class="fadeIn second textholder" placeholder="Lvl" formControlName="lvl">
 
+            <hr>
+
+            <p>Abilites info</p>
             <form [formGroup]="newAbilityForm" (ngSubmit)="onSaveAbility(newAbilityForm.value)">
                 <input type="text" id="nameAb" #nameAb class="fadeIn first textholder" placeholder="Ability Name" formControlName="name">
                 <input type="text" id="descAb" #descAb class="fadeIn second textholder" placeholder="Ability Description" formControlName="description">
@@ -14,6 +18,18 @@
             </form>
 
             <div style="font-size: 60%;"> Abilities saved: {{cantAbilities}} </div>
+
+            <hr>
+
+            <p>Evolution info</p>
+            <mat-form-field appearance="fill" class="select-evolution">
+              <mat-label>Evolution</mat-label>
+              <mat-select [(value)]='evolutionId'>
+                <mat-option *ngFor="let evol of pokemons" [value]="evol.id">
+                  {{evol.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
 
             <input type="submit" class="fadeIn third textholder" id='save-button' value="Save">
             <a routerLink='/pokemons' style="margin: 0;">
