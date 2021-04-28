@@ -16,6 +16,7 @@ export class ViewPokemonComponent implements OnInit {
   pokemons: pokemonI[];
   abilities:abilitiesI[];
   evolution:pokemonI;
+  evolutions:pokemonI[];
 
   id:number;
 
@@ -31,6 +32,17 @@ export class ViewPokemonComponent implements OnInit {
     return this.findPokemonByID(evId);
   }
 
+  findPokemonEvolutionsById(id:number):pokemonI[]{
+    let pokemons:pokemonI[] = [];
+    let pokemonAux:pokemonI;
+    pokemonAux = this.findPokemonEvolutionById(id);
+    while(pokemonAux != undefined){
+      pokemons.push(pokemonAux);
+      pokemonAux = this.findPokemonEvolutionById(pokemonAux.id);
+    } 
+    return pokemons;
+  }
+
   ngOnInit(): void {
     if(localStorage.getItem("userId")){
       this.id = this.route.snapshot.params.id;
@@ -38,14 +50,14 @@ export class ViewPokemonComponent implements OnInit {
       this.pokemon = this.findPokemonByID(this.id);
       this.abilities = this.pokemon.abilities;
       this.evolution = this.findPokemonEvolutionById(this.id);
-      
+      this.evolutions = this.findPokemonEvolutionsById(this.id);
     } else {
       this.router.navigate(['login']);
     }
   }
 
   ngOnDestroy(): void {
-    localStorage.removeItem('pokes')
+    //localStorage.removeItem('pokes')
   }
 
 }
