@@ -13,53 +13,39 @@ import { Observable } from 'rxjs';
 export class ViewPokemonComponent implements OnInit {
 
   pokemon:pokemonI;
+  pokemons: pokemonI[];
   abilities:abilitiesI[];
-  evolutions:evolutionI[];
-  names:string[];
+  evolution:pokemonI;
 
   id:number;
 
   constructor( private api:CertantApiService, private router:Router, private route: ActivatedRoute ) { 
   }
 
-  findPokemon(pokemons:Observable<pokemonI[]>){
-    pokemons.subscribe(
-      data => this.pokemon = data.find (
-        poke => poke.id == this.id
-      )
-    );
-    pokemons.subscribe(
-      data => this.abilities = data.find (
-        poke => poke.id == this.id
-      ).abilities
-    );
-    console.log(this.abilities);
+  findPokemonByID(id:number):pokemonI{
+    return JSON.parse(localStorage.getItem('pokes')).find( poke => poke.id == id);
+  }
+
+  findPokemonEvolutionById(id:number):pokemonI{
+    let evId = this.findPokemonByID(id).evolutionId;
+    return this.findPokemonByID(evId);
   }
 
   ngOnInit(): void {
     if(localStorage.getItem("userId")){
       this.id = this.route.snapshot.params.id;
-      let response = this.api.getPokemonByUserId(localStorage.getItem('userId'));
-      this.findPokemon(response);
-      // CARGAR EVOLUCIONES
+      this.api.getPokemonByUserId(localStorage.getItem('userId')).subscribe( data => localStorage.setItem('pokes', JSON.stringify(data)));
+      this.pokemon = this.findPokemonByID(this.id);
+      this.abilities = this.pokemon.abilities;
+      this.evolution = this.findPokemonEvolutionById(this.id);
       
-       
     } else {
       this.router.navigate(['login']);
     }
   }
 
+  ngOnDestroy(): void {
+    localStorage.removeItem('pokes')
+  }
+
 }
-
-/*
-
-let evId = this.pokemon.evolutionId;
-pokemons.subscribe(
-  data => data.map(
-    poke => {
-      if(poke.id == evId){ this.evolutions.push({'name':poke.name,'lvl':poke.lvl, 'id':poke.id})}
-    }
-  )
-);
-
-*/

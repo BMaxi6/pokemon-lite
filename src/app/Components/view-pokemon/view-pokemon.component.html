@@ -21,11 +21,11 @@
         <hr>
 
         <p class="subtitle pixel-font">Evoluciones: </p>
-        <div class="info pixel-font" *ngFor="let evolution of evolutions">
-            {{evolution?.name}}: {{evolution?.lvl}}
+        <div class="info pixel-font" *ngIf="evolution">
+            {{evolution.name}} -> lvl {{evolution.lvl}}
         </div>
-        <div class="info pixel-font" *ngIf="!evolutions">
-            No posee evoluciones
+        <div class="info pixel-font" *ngIf="!evolution">
+            No posee evolucion
         </div>
 
         <hr>
