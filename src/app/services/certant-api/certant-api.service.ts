@@ -9,7 +9,7 @@ const httpOptions = {
   headers: new HttpHeaders({ 
     'Access-Control-Allow-Origin':'*',
     'Authorization':'authkey',
-  })
+  }).set('Type-content', 'application/json')
 };
 
 @Injectable({
@@ -28,7 +28,7 @@ export class CertantApiService {
 
   getPokemonByUserId(id:string):Observable<pokemonI[]> {
     let direccion = this.url + "pokemon/" + id;
-    return  this.http.get<pokemonI[]>(direccion, httpOptions);
+    return this.http.get<pokemonI[]>(direccion, httpOptions);
   }
 
   editPokemonByUserId(pokemon:pokemonI):Observable<response>{

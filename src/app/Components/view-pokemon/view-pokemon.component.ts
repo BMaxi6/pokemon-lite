@@ -15,8 +15,7 @@ export class ViewPokemonComponent implements OnInit {
   pokemon:pokemonI;
   abilities:abilitiesI[];
   evolutions:evolutionI[];
-  cantAbilities:number=0;
-  cantEvolutions:number=0;
+  names:string[];
 
   id:number;
 
@@ -35,14 +34,12 @@ export class ViewPokemonComponent implements OnInit {
       ).abilities
     );
     console.log(this.abilities);
-    this.cantAbilities = this.abilities.length;
-    this.cantEvolutions = this.evolutions.length;
   }
 
   ngOnInit(): void {
     if(localStorage.getItem("userId")){
       this.id = this.route.snapshot.params.id;
-      let response = this.api.getPokemonByUserId(localStorage.getItem('userId'))
+      let response = this.api.getPokemonByUserId(localStorage.getItem('userId'));
       this.findPokemon(response);
       // CARGAR EVOLUCIONES
       
@@ -51,5 +48,18 @@ export class ViewPokemonComponent implements OnInit {
       this.router.navigate(['login']);
     }
   }
+
 }
 
+/*
+
+let evId = this.pokemon.evolutionId;
+pokemons.subscribe(
+  data => data.map(
+    poke => {
+      if(poke.id == evId){ this.evolutions.push({'name':poke.name,'lvl':poke.lvl, 'id':poke.id})}
+    }
+  )
+);
+
+*/
