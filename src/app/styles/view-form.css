@@ -8,6 +8,14 @@
     margin-bottom: 2px;
 }
 
+#cancel-button:focus {
+  background-color: black;
+}
+
+#save-button:focus {
+  background-color: red;
+}
+
 #cancel-button:hover {
     background-color: black;
 }
