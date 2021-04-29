@@ -43,6 +43,11 @@ export class ViewPokemonComponent implements OnInit {
     return pokemons;
   }
 
+  toEdit(){
+    localStorage.setItem('editPokemon', JSON.stringify(this.pokemon));
+    this.router.navigate(['edit']);
+  }
+
   ngOnInit(): void {
     if(localStorage.getItem("userId")){
       this.id = this.route.snapshot.params.id;

@@ -31,7 +31,7 @@ export class CertantApiService {
     return this.http.get<pokemonI[]>(direccion, httpOptions);
   }
 
-  editPokemonByUserId(pokemon:pokemonI):Observable<response>{
+  editPokemon(pokemon:pokemonI):Observable<response>{
     let direccion = this.url + "pokemon/";
     return this.http.put<response>(direccion, pokemon, httpOptions);
   }

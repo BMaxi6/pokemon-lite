@@ -12,12 +12,14 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { HeaderComponent } from './Components/header/header.component';
 import {MatSelectModule} from '@angular/material/select';
+import { EditPokemonComponent } from './Components/edit-pokemon/edit-pokemon.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
     HeaderComponent,
+    EditPokemonComponent,
   ],
   imports: [
     BrowserModule,

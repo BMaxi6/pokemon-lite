@@ -1,0 +1,47 @@
+<div class="big-box pixel-font fadeInDown">
+    EDIT {{pokemon.name}}
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+
+          <p>Pokemon info</p>
+          <form [formGroup]="newPokeForm" (ngSubmit)="onSave(newPokeForm.value)">
+            <input type="text" id="name" class="fadeIn first textholder" placeholder="Name" formControlName="name" >
+            <input type="text" id="lvl" class="fadeIn second textholder" placeholder="Lvl" formControlName="lvl">
+
+            <hr>
+
+            <p>Abilites info</p>
+            <form [formGroup]="newAbilityForm" (ngSubmit)="onSaveAbility(newAbilityForm.value)">
+                <input type="text" id="nameAb" #nameAb class="fadeIn first textholder" placeholder="Ability Name" formControlName="name">
+                <input type="text" id="descAb" #descAb class="fadeIn second textholder" placeholder="Ability Description" formControlName="description">
+                <input type="submit" class="fadeIn third textholder" id='save-button' value="Save Ability">
+            </form>
+
+            <div style="font-size: 60%;"> Abilities saved: {{cantAbilities}} </div>
+
+            <hr>
+
+            <p>Evolution info</p>
+            <mat-form-field appearance="fill" class="select-evolution">
+              <mat-label>Evolution</mat-label>
+              <mat-select [(value)]='evolutionId'>
+                <mat-option *ngFor="let evol of pokemons" [value]="evol.id">
+                  {{evol.name}}
+                </mat-option>
+                <mat-option [value]="0">
+                    Ninguno
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <input type="submit" class="fadeIn third textholder" id='save-button' value="Save">
+            <a routerLink='/pokemons' style="margin: 0;">
+                <input type="button" class="fadeIn third textholder" id="cancel-button" value="Cancel">
+            </a>
+          </form>
+      
+        </div>
+      </div>
+
+</div>
+
