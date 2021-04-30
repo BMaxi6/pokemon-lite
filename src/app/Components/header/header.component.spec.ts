@@ -18,6 +18,7 @@ describe('HeaderComponent', () => {
   });
 
   beforeEach(() => {
+    localStorage.setItem('username', 'Certant');
     fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.debugElement.componentInstance;
     fixture.detectChanges();
@@ -27,5 +28,13 @@ describe('HeaderComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('should greeting like "Hola, Certant"', () => {
+    const span = fixture.debugElement.nativeElement.querySelector('span');
+    expect(span.textContent).toContain('Certant')
+  })
+
+  afterAll(()=> {
+    localStorage.removeItem('username');
+  })
 
 });
