@@ -23,7 +23,7 @@ export class EditPokemonComponent implements OnInit {
     name: new FormControl('', Validators.required),
     evolutionId: new FormControl(null, Validators.required),
     lvl: new FormControl('', Validators.required),
-    id: new FormControl(localStorage.getItem('userId'), Validators.required),
+    id: new FormControl(Number(localStorage.getItem('userId')), Validators.required),
     abilities: new FormControl('', Validators.required),
   })
 
@@ -70,13 +70,12 @@ export class EditPokemonComponent implements OnInit {
   onSave(form:newPokemonI){
     form.abilities = this.abilites;
     form.evolutionId = this.checkEvolutionId(this.evolutionId);
-    console.log(form);
-    /*
+    form.id = Number(form.id);
+    form.lvl = Number(form.lvl);
     this.api.editPokemon(form).subscribe( data => {
       console.log(data);
     });
     this.router.navigate(['pokemons']);
-    */
   }
 
   checkEvolutionId(id:number):number{
@@ -86,7 +85,7 @@ export class EditPokemonComponent implements OnInit {
     if(id == 0){
       return null;
     }
-    return id;
+    return Number(id);
   }
 
 }
