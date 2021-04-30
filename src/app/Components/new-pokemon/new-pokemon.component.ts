@@ -56,8 +56,11 @@ export class NewPokemonComponent implements OnInit {
 
   savePokemonDataInForm(form:newPokemonI){
     form.abilities = this.abilites;
-    if(this.evolutionId > 0)
-      form.evolutionId = this.evolutionId;
+    if(this.evolutionId > 0) {
+      form.evolutionId = Number(this.evolutionId);
+    }
+    form.id = Number(form.id);
+    form.lvl = Number(form.lvl);
     }
 
   onSave(form:newPokemonI){
@@ -65,6 +68,6 @@ export class NewPokemonComponent implements OnInit {
     this.api.addPokemonByUserId(form).subscribe( data => {
       console.log(data);
     });
-    this.router.navigate(['pokemons']);
+    //this.router.navigate(['pokemons']);
   }
 }
