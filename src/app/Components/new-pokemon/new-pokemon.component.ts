@@ -68,6 +68,6 @@ export class NewPokemonComponent implements OnInit {
     this.api.addPokemonByUserId(form).subscribe( data => {
       console.log(data);
     });
-    //this.router.navigate(['pokemons']);
+    this.router.navigate(['pokemons']);
   }
 }
