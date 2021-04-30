@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { CertantApiService } from 'src/app/services/certant-api/certant-api.service';
+import { RouterTestingModule } from '@angular/router/testing';
+import { routes, routingComponents } from 'src/app/app-routing.module';
 
 import { ViewPokemonComponent } from './view-pokemon.component';
 
@@ -11,9 +11,9 @@ describe('ViewPokemonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ViewPokemonComponent ],
-      imports: [HttpClientTestingModule],
-      providers: [CertantApiService, HttpClient],
+      declarations: [ ViewPokemonComponent, routingComponents ],
+      imports: [RouterTestingModule.withRoutes(routes), HttpClientTestingModule],
+      providers: [],
     })
     .compileComponents();
   });

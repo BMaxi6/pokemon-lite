@@ -3,8 +3,6 @@ import { FormGroup, FormControl, Validators} from '@angular/forms'
 import { CertantApiService } from '../../services/certant-api/certant-api.service'
 import { abilitiesI, newPokemonI, pokemonI } from '../../models/pokemon.request.interface'
 import { Router } from '@angular/router'
-import { from } from 'rxjs';
-import { formatCurrency } from '@angular/common';
 
 
 @Component({
