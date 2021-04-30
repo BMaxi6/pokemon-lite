@@ -54,13 +54,17 @@ export class NewPokemonComponent implements OnInit {
     this.newAbilityForm.reset(this.profile);
   }
 
-  onSave(form:newPokemonI){
+  savePokemonDataInForm(form:newPokemonI){
     form.abilities = this.abilites;
-    form.evolutionId = this.evolutionId;
+    if(this.evolutionId > 0)
+      form.evolutionId = this.evolutionId;
+    }
+
+  onSave(form:newPokemonI){
+    this.savePokemonDataInForm(form);
     this.api.addPokemonByUserId(form).subscribe( data => {
       console.log(data);
     });
     this.router.navigate(['pokemons']);
   }
-
 }

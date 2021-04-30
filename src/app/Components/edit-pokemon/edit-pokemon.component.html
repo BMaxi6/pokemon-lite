@@ -25,11 +25,11 @@
             <mat-form-field appearance="fill" class="select-evolution">
               <mat-label>Evolution</mat-label>
               <mat-select [(value)]='evolutionId'>
+                <mat-option [value]="0">
+                  Ninguno
+                </mat-option>
                 <mat-option *ngFor="let evol of pokemons" [value]="evol.id">
                   {{evol.name}}
-                </mat-option>
-                <mat-option [value]="0">
-                    Ninguno
                 </mat-option>
               </mat-select>
             </mat-form-field>
