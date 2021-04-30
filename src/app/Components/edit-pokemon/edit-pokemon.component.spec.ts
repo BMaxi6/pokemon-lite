@@ -10,6 +10,16 @@ describe('EditPokemonComponent', () => {
   let component: EditPokemonComponent;
   let fixture: ComponentFixture<EditPokemonComponent>;
 
+  let pokemon:pokemonI = {'name': 'Pikachu', 'id': 2, 'abilities': [], 'evolutionId': 3, 'lvl': 15};
+  let pokemons:pokemonI[] = [];
+
+  beforeAll(() => {
+    localStorage.setItem('userId','1');
+    pokemons.push(pokemon);
+    localStorage.setItem('pokes', JSON.stringify(pokemons));
+    localStorage.setItem('editPokemon', JSON.stringify(pokemon));
+  })
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [RouterTestingModule.withRoutes(routes) ,HttpClientTestingModule],
@@ -19,21 +29,15 @@ describe('EditPokemonComponent', () => {
   });
 
   beforeEach(() => {
-    //localStorage.setItem('userId','1');
     fixture = TestBed.createComponent(EditPokemonComponent);
     fixture.detectChanges();
-    //localStorage.removeItem('userId');
   });
 
   it('should create', () => {
-    /*
-    let pokemon:pokemonI = {'name': 'Pikachu', 'id': 2, 'abilities': [], 'evolutionId': 3, 'lvl': 15};
-    let pokemons:pokemonI[] = [];
-    pokemons.push(pokemon);
-    localStorage.setItem('pokes', JSON.stringify(pokemons));
-    localStorage.setItem('editPokemon', JSON.stringify(pokemon));
-    component.pokemon = pokemon;
-    */
     expect(component).toBeTruthy();
   });
+
+  afterAll(() => {
+    localStorage.removeItem('userId');
+  })
 });
