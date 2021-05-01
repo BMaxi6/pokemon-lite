@@ -59,18 +59,22 @@ export class NewPokemonComponent implements OnInit {
     if(this.evolutionId > 0) {
       form.evolutionId = Number(this.evolutionId);
     }
-    form.id = Number(form.id);
     form.lvl = Number(form.lvl);
     }
 
   onSave(form:pokemonI){
     this.savePokemonDataInForm(form);
-    let postPoke: newPokemonI; // ARREGLAR SETO
+    let postPoke: newPokemonI = {
+      pokemon:{name:'', evolutionId:null, abilities:[], id:null, lvl: 0},
+      userId: ''
+    };
     postPoke.pokemon = form;
-    postPoke.userId = Number(localStorage.getItem('userId'));
+    postPoke.pokemon.id = 7;
+    postPoke.userId = localStorage.getItem('userId');
+    console.log(postPoke.pokemon.evolutionId);
     this.api.addPokemonByUserId(postPoke).subscribe( data => {
       console.log(data);
     });
-    this.router.navigate(['pokemons']);
+    //this.router.navigate(['pokemons']);
   }
 }

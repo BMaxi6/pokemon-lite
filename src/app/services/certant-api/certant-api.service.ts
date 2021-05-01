@@ -8,7 +8,6 @@ import { response } from '../../models/responses.interface'
 const httpOptions = {
   headers: new HttpHeaders({ 
     'Access-Control-Allow-Origin':'*',
-    'Authorization':'authkey',
     'Content-Type':  'application/json',
   }).set('Type-content', 'application/json')
 };
@@ -33,12 +32,12 @@ export class CertantApiService {
   }
 
   editPokemon(pokemon:pokemonI):Observable<response>{
-    let direccion = this.url + "pokemon/";
+    let direccion = this.url + "pokemon";
     return this.http.put<response>(direccion, pokemon, httpOptions);
   }
 
   addPokemonByUserId(pokemon:newPokemonI):Observable<response>{
-    let direccion = this.url + "pokemon/";
+    let direccion = this.url + "pokemon";
     return this.http.post<response>(direccion, pokemon, httpOptions);
   }
 }

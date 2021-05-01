@@ -19,5 +19,5 @@ export interface evolutionI{
 
 export interface newPokemonI{
     pokemon: pokemonI;
-    userId: number;
+    userId: string;
 }
