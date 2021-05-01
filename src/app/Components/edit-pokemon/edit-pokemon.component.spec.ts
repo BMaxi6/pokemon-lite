@@ -30,6 +30,7 @@ describe('EditPokemonComponent', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(EditPokemonComponent);
+    component = fixture.componentInstance;
     fixture.detectChanges();
   });
 

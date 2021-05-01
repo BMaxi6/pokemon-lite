@@ -21,7 +21,7 @@ export class NewPokemonComponent implements OnInit {
     name: new FormControl('', Validators.required),
     evolutionId: new FormControl(null, Validators.required),
     lvl: new FormControl('', Validators.required),
-    id: new FormControl(localStorage.getItem('userId'), Validators.required),
+    id: new FormControl(null),
     abilities: new FormControl('', Validators.required),
   })
 
@@ -54,7 +54,7 @@ export class NewPokemonComponent implements OnInit {
     this.newAbilityForm.reset(this.profile);
   }
 
-  savePokemonDataInForm(form:newPokemonI){
+  savePokemonDataInForm(form:pokemonI){
     form.abilities = this.abilites;
     if(this.evolutionId > 0) {
       form.evolutionId = Number(this.evolutionId);
@@ -63,9 +63,12 @@ export class NewPokemonComponent implements OnInit {
     form.lvl = Number(form.lvl);
     }
 
-  onSave(form:newPokemonI){
+  onSave(form:pokemonI){
     this.savePokemonDataInForm(form);
-    this.api.addPokemonByUserId(form).subscribe( data => {
+    let postPoke: newPokemonI; // ARREGLAR SETO
+    postPoke.pokemon = form;
+    postPoke.userId = Number(localStorage.getItem('userId'));
+    this.api.addPokemonByUserId(postPoke).subscribe( data => {
       console.log(data);
     });
     this.router.navigate(['pokemons']);

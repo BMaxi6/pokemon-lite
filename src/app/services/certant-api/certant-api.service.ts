@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { loginI, loginResponseI } from '../../models/login.interface'
-import { pokemonI } from '../../models/pokemon.request.interface'
+import { newPokemonI, pokemonI } from '../../models/pokemon.request.interface'
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs'
 import { response } from '../../models/responses.interface'
@@ -36,7 +36,7 @@ export class CertantApiService {
     return this.http.put<response>(direccion, pokemon, httpOptions);
   }
 
-  addPokemonByUserId(pokemon:pokemonI):Observable<response>{
+  addPokemonByUserId(pokemon:newPokemonI):Observable<response>{
     let direccion = this.url + "pokemon/";
     return this.http.post<response>(direccion, pokemon, httpOptions);
   }

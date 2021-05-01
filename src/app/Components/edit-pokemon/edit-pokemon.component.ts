@@ -67,7 +67,7 @@ export class EditPokemonComponent implements OnInit {
     this.newAbilityForm.reset(this.profile);
   }
 
-  onSave(form:newPokemonI){
+  onSave(form:pokemonI){
     form.abilities = this.abilites;
     form.evolutionId = this.checkEvolutionId(this.evolutionId);
     form.id = Number(form.id);

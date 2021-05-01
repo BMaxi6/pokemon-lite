@@ -18,9 +18,6 @@ export interface evolutionI{
 }
 
 export interface newPokemonI{
-    name: string;
-    evolutionId:number;
-    abilities: abilitiesI[];
-    lvl:number;
-    id: number; // userId
+    pokemon: pokemonI;
+    userId: number;
 }
