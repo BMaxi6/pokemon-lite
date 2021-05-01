@@ -23,7 +23,7 @@ export class EditPokemonComponent implements OnInit {
     name: new FormControl('', Validators.required),
     evolutionId: new FormControl(null, Validators.required),
     lvl: new FormControl('', Validators.required),
-    id: new FormControl(Number(localStorage.getItem('userId')), Validators.required),
+    id: new FormControl('', Validators.required),
     abilities: new FormControl('', Validators.required),
   })
 
@@ -57,6 +57,7 @@ export class EditPokemonComponent implements OnInit {
     this.newPokeForm.get('name').setValue(this.pokemon.name);
     this.newPokeForm.get('evolutionId').setValue(this.pokemon.evolutionId);
     this.newPokeForm.get('lvl').setValue(this.pokemon.lvl);
+    this.newPokeForm.get('id').setValue(this.pokemon.id);
     this.abilites= this.pokemon.abilities;
     this.cantAbilities = this.pokemon.abilities.length;
   }

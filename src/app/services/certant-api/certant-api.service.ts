@@ -9,6 +9,7 @@ const httpOptions = {
   headers: new HttpHeaders({ 
     'Access-Control-Allow-Origin':'*',
     'Authorization':'authkey',
+    'Content-Type':  'application/json',
   }).set('Type-content', 'application/json')
 };
 
