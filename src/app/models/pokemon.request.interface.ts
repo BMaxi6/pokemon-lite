@@ -11,11 +11,7 @@ export interface pokemonI{
     lvl: number;
 }
 
-export interface evolutionI{
-    id: number;
-    lvl: number;
-    name: string;
-}
+
 
 export interface newPokemonI{
     pokemon: pokemonI;

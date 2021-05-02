@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators} from '@angular/forms'
 import { CertantApiService } from '../../services/certant-api/certant-api.service'
-import { loginI, loginResponseI } from '../../models/login.interface'
-import { response } from '../../models/responses.interface'
+import { loginI } from '../../models/login.interface'
 import { Router } from '@angular/router'
 
 @Component({

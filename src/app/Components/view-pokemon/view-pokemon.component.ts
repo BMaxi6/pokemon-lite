@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { abilitiesI, evolutionI, pokemonI } from 'src/app/models/pokemon.request.interface'
+import { abilitiesI, pokemonI } from 'src/app/models/pokemon.request.interface'
 import { CertantApiService } from '../../services/certant-api/certant-api.service'
 import { Router, ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
 
 
 @Component({
