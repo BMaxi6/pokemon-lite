@@ -19,7 +19,7 @@ export class ViewPokemonComponent implements OnInit {
 
   id:number;
 
-  constructor( private api:CertantApiService, private router:Router, private route: ActivatedRoute ) { 
+  constructor( private api:CertantApiService, private router:Router, public route: ActivatedRoute ) { 
   }
 
   findPokemonByID(id:number):pokemonI{

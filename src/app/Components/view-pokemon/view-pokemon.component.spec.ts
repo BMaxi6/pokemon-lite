@@ -1,5 +1,6 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { routes, routingComponents } from 'src/app/app-routing.module';
 import { pokemonI } from 'src/app/models/pokemon.request.interface';
@@ -13,8 +14,11 @@ describe('ViewPokemonComponent', () => {
   let pikachu:pokemonI = {name: 'Pikachu', lvl: 30, id: 2, abilities: [], evolutionId: 3};
   let raichu:pokemonI = {name: 'Raichu', lvl: 60, id: 3, abilities: [], evolutionId: null};
   let pokemons:pokemonI[] = []
+  let helperPokes;
     
   beforeAll( () => {
+    helperPokes = localStorage.getItem('pokes');
+    localStorage.removeItem('pokes');
     pokemons.push(pichu);
     pokemons.push(pikachu);
     pokemons.push(raichu);
@@ -25,15 +29,25 @@ describe('ViewPokemonComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ ViewPokemonComponent, routingComponents ],
       imports: [RouterTestingModule.withRoutes(routes), HttpClientTestingModule],
-      providers: [],
+      providers: [{
+          provide: ActivatedRoute,
+          useValue: {
+            snapshot: {params: {id: '1'}}
+          }
+      }],
     })
-    .compileComponents();
+    .overrideComponent(ViewPokemonComponent, {
+      set: {
+        template: '',
+      },
+    }).compileComponents();
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ViewPokemonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    component.route.snapshot.params.id = 1;
   });
 
   it('should create', () => {
@@ -59,5 +73,6 @@ describe('ViewPokemonComponent', () => {
 
   afterAll( () => {
     localStorage.removeItem('pokes');
+    localStorage.setItem('pokes', helperPokes);
   })
 });

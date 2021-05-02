@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import {routingComponents, routes} from './app-routing.module'
 import { AppModule } from './app.module';
 import { DebugElement } from '@angular/core';
+import { GuardLoginService } from './services/guard-login/guard-login.service';
 
     describe('Routing Component', () => {
 
@@ -16,15 +17,20 @@ import { DebugElement } from '@angular/core';
         let router: Router;
         let component: AppComponent;
         let fixture: ComponentFixture<AppComponent>;
-        //let debug: DebugElement
+        let helperUserId;
         
+        beforeAll(() => {
+            helperUserId = localStorage.getItem('userId');
+            localStorage.removeItem('userId');
+        })
+
         beforeEach(async () => {
             await TestBed.configureTestingModule({
                 imports: [RouterTestingModule.withRoutes(routes)],
                 declarations: [
                     routingComponents
                 ],
-                providers: [],
+                providers: [GuardLoginService],
             }).compileComponents();
         });
 
@@ -37,15 +43,15 @@ import { DebugElement } from '@angular/core';
         })
 
         it('navigate to "" should redirects you to "login"', fakeAsync(() => {
-        router.navigate(['']);
-        tick();
-        expect(location.path()).toBe('/login');  
+            router.navigate(['']);
+            tick();
+            expect(location.path()).toBe('/login');  
         }))
 
         it('navigate to "/pokemons" should redirects you to "login" if you dont have userId', fakeAsync(() => {
             router.navigate(['pokemons']);
             tick();
-            expect(location.path()).toBe('/pokemons');  
+            expect(location.path()).toBe('/login');  
         }))
 
         it('navigate to "/pokemons" should stay in "/pokemons" if you have userId', fakeAsync(() => {
@@ -55,5 +61,9 @@ import { DebugElement } from '@angular/core';
             localStorage.removeItem('userId');
             expect(location.path()).toBe('/pokemons');
         }))
+
+        afterAll(() => {
+            localStorage.setItem('userId', helperUserId);
+        })
   
 });

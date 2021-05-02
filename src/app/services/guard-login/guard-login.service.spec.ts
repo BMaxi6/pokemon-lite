@@ -1,4 +1,6 @@
 import { TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { routes, routingComponents } from 'src/app/app-routing.module';
 
 import { GuardLoginService } from '../guard-login/guard-login.service';
 
@@ -8,7 +10,13 @@ describe('GuardLoginService', () => {
     
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [RouterTestingModule.withRoutes(routes)],
+                declarations: [
+                    routingComponents
+                ],
+                providers: [GuardLoginService],
+    });
     service = TestBed.inject(GuardLoginService);
   });
 

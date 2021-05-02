@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { routes, routingComponents } from 'src/app/app-routing.module';
-import { abilitiesI, newPokemonI } from 'src/app/models/pokemon.request.interface';
+import { abilitiesI, newPokemonI, pokemonI } from 'src/app/models/pokemon.request.interface';
 import { NewPokemonComponent } from './new-pokemon.component';
 
 describe('NewPokemonComponent', () => {
@@ -46,7 +46,7 @@ describe('NewPokemonComponent', () => {
 
     component.evolutionId = 0;
 
-    let form:newPokemonI = {name: 'Pikachu', evolutionId: null, abilities: null, lvl: 15, id:null};
+    let form:pokemonI = {name: 'Pikachu', evolutionId: null, abilities: null, lvl: 15, id:null};
     component.savePokemonDataInForm(form);
     expect(form.abilities.length).toBe(2);
     expect(form.evolutionId).toBe(null);
@@ -61,7 +61,7 @@ describe('NewPokemonComponent', () => {
 
     component.evolutionId = 1;
 
-    let form:newPokemonI = {name: 'Pikachu', evolutionId: null, abilities: null, lvl: 15, id:null};
+    let form:pokemonI = {name: 'Pikachu', evolutionId: null, abilities: null, lvl: 15, id:null};
     component.savePokemonDataInForm(form);
     expect(form.abilities.length).toBe(2);
     expect(form.evolutionId).toBe(1);
