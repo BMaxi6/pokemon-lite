@@ -8,7 +8,6 @@ import { GuardLoginService } from '../guard-login/guard-login.service';
 
 describe('GuardLoginService', () => {
   let service: GuardLoginService;
-
   let location: Location;
   let router: Router;
   let helperUserId;
@@ -33,7 +32,6 @@ describe('GuardLoginService', () => {
     router = TestBed.inject(Router);
     location = TestBed.inject(Location);
     router.initialNavigation();
-    localStorage.removeItem('userId');
 })
 
   it('should be created', () => {

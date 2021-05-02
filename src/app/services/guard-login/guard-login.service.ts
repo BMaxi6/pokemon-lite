@@ -16,7 +16,6 @@ export class GuardLoginService implements CanActivate {
 
   canActivate() {
       if (!this.isLogged()) {
-        console.log('No esta logeado');
         this.router.navigate(['/']);
         return false;
       }
