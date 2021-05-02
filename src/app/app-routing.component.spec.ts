@@ -3,12 +3,9 @@ import { Location } from '@angular/common'
 import { Router } from '@angular/router'
 import { RouterTestingModule } from '@angular/router/testing'
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import {routingComponents, routes} from './app-routing.module'
-import { AppModule } from './app.module';
-import { DebugElement } from '@angular/core';
 import { GuardLoginService } from './services/guard-login/guard-login.service';
 
     describe('Routing Component', () => {

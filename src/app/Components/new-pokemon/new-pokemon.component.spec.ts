@@ -1,6 +1,5 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { routes, routingComponents } from 'src/app/app-routing.module';
 import { abilitiesI, newPokemonI, pokemonI } from 'src/app/models/pokemon.request.interface';
