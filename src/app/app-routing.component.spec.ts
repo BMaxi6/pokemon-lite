@@ -34,33 +34,27 @@ import { GuardLoginService } from './services/guard-login/guard-login.service';
         beforeEach( () => {
             router = TestBed.inject(Router);
             location = TestBed.inject(Location);
-            fixture = TestBed.createComponent(AppComponent);
             router.initialNavigation();
-            localStorage.removeItem('userId');
+            localStorage.setItem('userId', '1');
         })
 
         it('navigate to "" should redirects you to "login"', fakeAsync(() => {
+            localStorage.removeItem('userId');
             router.navigate(['']);
             tick();
             expect(location.path()).toBe('/login');  
         }))
 
-        it('navigate to "/pokemons" should redirects you to "login" if you dont have userId', fakeAsync(() => {
+        it('navigate to "/pokemons" should be in pokemon component if you have userId', fakeAsync(() => {
             router.navigate(['pokemons']);
             tick();
-            expect(location.path()).toBe('/login');  
-        }))
-
-        it('navigate to "/pokemons" should stay in "/pokemons" if you have userId', fakeAsync(() => {
-            localStorage.setItem('userId', '1');
-            router.navigate(['pokemons']);
-            tick();
-            localStorage.removeItem('userId');
             expect(location.path()).toBe('/pokemons');
+            expect(component.title).toBe('AppComponent')
         }))
 
         afterAll(() => {
+            localStorage.removeItem('userId');
             localStorage.setItem('userId', helperUserId);
         })
-  
+
 });
