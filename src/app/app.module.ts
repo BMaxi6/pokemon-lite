@@ -13,6 +13,8 @@ import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { HeaderComponent } from './Components/header/header.component';
 import {MatSelectModule} from '@angular/material/select';
 import { EditPokemonComponent } from './Components/edit-pokemon/edit-pokemon.component';
+import { LoginComponent } from './Components/login/login.component';
+import { GuardLoginService } from './services/guard-login/guard-login.service';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,7 @@ import { EditPokemonComponent } from './Components/edit-pokemon/edit-pokemon.com
     routingComponents,
     HeaderComponent,
     EditPokemonComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,7 @@ import { EditPokemonComponent } from './Components/edit-pokemon/edit-pokemon.com
     MatToolbarModule,
     MatSelectModule,
   ],
-  providers: [],
+  providers: [GuardLoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

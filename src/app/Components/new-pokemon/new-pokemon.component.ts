@@ -32,18 +32,10 @@ export class NewPokemonComponent implements OnInit {
 
   constructor(private api:CertantApiService, private router:Router) { }
 
-  checkLocalStorage(){
-    if(localStorage.getItem("userId")){
-      this.api.getPokemonByUserId(localStorage.getItem('userId')).subscribe(
-        data => localStorage.setItem('pokes',JSON.stringify(data))
-      )
-    } else {
-      this.router.navigate(['login']);
-    }
-  }
-
   ngOnInit(): void {
-    this.checkLocalStorage();
+    this.api.getPokemonByUserId(localStorage.getItem('userId')).subscribe(
+      data => localStorage.setItem('pokes',JSON.stringify(data))
+    )
     this.pokemons = JSON.parse(localStorage.getItem('pokes'));
     localStorage.removeItem('pokes');
   }

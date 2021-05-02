@@ -15,11 +15,6 @@ export class PokemonComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    if(localStorage.getItem("userId")){
-      this.api.getPokemonByUserId(localStorage.getItem('userId')).subscribe( data => this.pokemons = data);
-    } else {
-      this.router.navigate(['login']);
-    }
+      this.api.getPokemonByUserId(localStorage.getItem('userId')).subscribe( data => this.pokemons = data); 
   }
-
 }

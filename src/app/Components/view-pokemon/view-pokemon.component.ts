@@ -49,16 +49,12 @@ export class ViewPokemonComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(localStorage.getItem("userId")){
-      this.id = this.route.snapshot.params.id;
-      this.api.getPokemonByUserId(localStorage.getItem('userId')).subscribe( data => localStorage.setItem('pokes', JSON.stringify(data)));
-      this.pokemon = this.findPokemonByID(this.id);
-      this.abilities = this.pokemon.abilities;
-      this.evolution = this.findPokemonEvolutionById(this.id);
-      this.evolutions = this.findPokemonEvolutionsById(this.id);
-    } else {
-      this.router.navigate(['login']);
-    }
+    this.id = this.route.snapshot.params.id;
+    this.api.getPokemonByUserId(localStorage.getItem('userId')).subscribe( data => localStorage.setItem('pokes', JSON.stringify(data)));
+    this.pokemon = this.findPokemonByID(this.id);
+    this.abilities = this.pokemon.abilities;
+    this.evolution = this.findPokemonEvolutionById(this.id);
+    this.evolutions = this.findPokemonEvolutionsById(this.id);
   }
 
   ngOnDestroy(): void {

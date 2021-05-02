@@ -6,14 +6,15 @@ import {PokemonComponent} from './Components/pokemon/pokemon.component'
 import {NewPokemonComponent} from './Components/new-pokemon/new-pokemon.component'
 import {ViewPokemonComponent} from './Components/view-pokemon/view-pokemon.component'
 import {EditPokemonComponent} from './Components/edit-pokemon/edit-pokemon.component'
+import { GuardLoginService } from './services/guard-login/guard-login.service';
 
 export const routes: Routes = [
   { path: '' , redirectTo: 'login' , pathMatch: "full"},
   { path: 'login', component: LoginComponent},
-  { path: 'pokemons', component: PokemonComponent},
-  { path: 'newPokemon', component: NewPokemonComponent},
-  { path: 'pokemon/:id', component: ViewPokemonComponent},
-  { path: 'edit', component: EditPokemonComponent}
+  { path: 'pokemons', component: PokemonComponent, canActivate: [GuardLoginService]},
+  { path: 'newPokemon', component: NewPokemonComponent, canActivate: [GuardLoginService]},
+  { path: 'pokemon/:id', component: ViewPokemonComponent, canActivate: [GuardLoginService]},
+  { path: 'edit', component: EditPokemonComponent, canActivate: [GuardLoginService]}
 ];
 
 @NgModule({

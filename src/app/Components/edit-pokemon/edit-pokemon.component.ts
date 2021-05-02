@@ -35,20 +35,16 @@ export class EditPokemonComponent implements OnInit {
   constructor(private api:CertantApiService, private router:Router) { }
 
   checkLocalStorage(){
-    if(localStorage.getItem("userId")){
-      if(localStorage.getItem('pokes') && localStorage.getItem('editPokemon')){
-        this.api.getPokemonByUserId(localStorage.getItem('userId')).subscribe(
-          data => localStorage.setItem('pokes',JSON.stringify(data))
-        )
-        this.pokemon = JSON.parse( localStorage.getItem('editPokemon') );
-        localStorage.removeItem('editPokemon');
-        this.pokemons = JSON.parse(localStorage.getItem('pokes'));
-        localStorage.removeItem('pokes');
-      } else {
-        this.router.navigate(['pokemons']);
-      }
+    if(localStorage.getItem('pokes') && localStorage.getItem('editPokemon')){
+      this.api.getPokemonByUserId(localStorage.getItem('userId')).subscribe(
+        data => localStorage.setItem('pokes',JSON.stringify(data))
+      )
+      this.pokemon = JSON.parse( localStorage.getItem('editPokemon') );
+      localStorage.removeItem('editPokemon');
+      this.pokemons = JSON.parse(localStorage.getItem('pokes'));
+      localStorage.removeItem('pokes');
     } else {
-      this.router.navigate(['login']);
+      this.router.navigate(['pokemons']);
     }
   }
 
